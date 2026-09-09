@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Европейский день языков</title>
+    <!-- Подключаем внешний файл стилей CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header style="position: relative;">
+        <!-- Панель управления (тема и язык) -->
+        <div class="controls">
+            <button id="lang-toggle" class="control-btn">🇬🇧 English</button>
+            <button id="theme-toggle" class="control-btn">🌙 Темная тема</button>
+        </div>
+
+        <h1 data-translate="header-title">Европейский день языков</h1>
+        <p data-translate="header-subtitle">✦ 26 сентября ✦</p>
+    </header>
+
+    <div class="container">
+        <h2 data-translate="section-sounds">Как звучит «Привет»?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3 data-translate="lang-french">Французский</h3>
+                <p class="word-highlight">Bonjour!</p>
+            </div>
+            <div class="card">
+                <h3 data-translate="lang-german">Немецкий</h3>
+                <p class="word-highlight">Hallo!</p>
+            </div>
+            <div class="card">
+                <h3 data-translate="lang-spanish">Испанский</h3>
+                <p class="word-highlight">¡Hola!</p>
+            </div>
+            <div class="card">
+                <h3 data-translate="lang-swedish">Шведский</h3>
+                <p class="word-highlight">Hej!</p>
+            </div>
+        </div>
+
+        <h2 data-translate="section-quiz">Мини-викторина 🎉</h2>
+        <div class="quiz-box">
+            <!-- Сюда JS будет подставлять номер вопроса -->
+            <h3 id="quiz-progress" style="color: var(--primary); margin-top: 0;">Вопрос 1 из 3</h3>
+            
+            <!-- Текст вопроса -->
+            <p id="quiz-question" style="font-size: 1.1rem; font-weight: bold;"></p>
+            
+            <!-- Контейнер для кнопок с ответами -->
+            <div id="quiz-options"></div>
+            
+            <!-- Сообщение после ответа или финальный результат -->
+            <p id="quiz-result"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <span data-translate="footer-text">Разработано в VS Code</span></p>
+    </footer>
+
+    <!-- Подключаем JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

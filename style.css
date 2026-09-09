@@ -1,0 +1,183 @@
+:root {
+    --primary: #003399;
+    --accent: #FFCC00;
+    --dark: #222;
+    --light: #f4f4f9;
+    --success: #2ecc71;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), #001f66);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+}
+
+header p {
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-top: 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    
+    /* 1. Добавляем плавность для всех изменений (длительность 0.3 секунды) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* 2. Описываем, что происходит при наведении (hover) */
+.card:hover {
+    /* Увеличиваем карточку на 5% */
+    transform: scale(1.05); 
+    
+    /* Делаем тень более глубокой, чтобы создать эффект "приподнимания" */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12); 
+    
+    /* Меняем курсор на указатель, чтобы показать интерактивность */
+    cursor: pointer; 
+}
+
+
+.word-highlight {
+    font-size: 1.5rem;
+    color: #e67e22;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.quiz-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.quiz-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+.quiz-btn:hover {
+    background: #002266;
+}
+
+#quiz-result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--success);
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+/* Панель управления кнопками в шапке */
+.controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Общий стиль для кнопок темы и языка */
+.control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Переменные цвета для ТЕМНОЙ ТЕМЫ */
+body.dark-theme {
+    --light: #121212;      /* Темный фон сайта */
+    --dark: #f4f4f9;       /* Светлый текст */
+}
+
+/* Специфичные настройки элементов в темной теме */
+body.dark-theme .card, 
+body.dark-theme .quiz-box {
+    background: #1e1e1e;   /* Темно-серый фон карточек */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-theme h2 {
+    color: #5c85ff;        /* Более светлый синий оттенок для заголовков в темноте */
+}
+
+/* Описываем саму анимацию плавного появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px); /* Текст будет мягко приподниматься */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Этот класс мы будем временно вешать на контейнер при смене языка */
+.fade-animation {
+    animation: fadeIn 0.4s ease-out;
+}
