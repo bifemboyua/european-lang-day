@@ -1,67 +1,125 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Европейский день языков</title>
-    <!-- Подключаем внешний файл стилей CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Европейский день языков — 26 сентября</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header style="position: relative;">
-        <!-- Панель управления (тема и язык) -->
-        <div class="controls">
-            <button id="lang-toggle" class="control-btn">🇬🇧 English</button>
-            <button id="theme-toggle" class="control-btn">🌙 Темная тема</button>
-        </div>
+<div class="noise-layer"></div>
 
-        <h1 data-translate="header-title">Европейский день языков</h1>
-        <p data-translate="header-subtitle">✦ 26 сентября ✦</p>
-    </header>
+<header class="site-header">
+  <div class="brand" data-i18n="brand">Европейский день языков</div>
+  <nav class="header-controls">
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark theme">
+      <span class="theme-dot"></span>
+    </button>
+  </nav>
+</header>
 
-    <div class="container">
-        <h2 data-translate="section-sounds">Как звучит «Привет»?</h2>
-        <div class="grid">
-            <div class="card">
-                <h3 data-translate="lang-french">Французский</h3>
-                <p class="word-highlight">Bonjour!</p>
-            </div>
-            <div class="card">
-                <h3 data-translate="lang-german">Немецкий</h3>
-                <p class="word-highlight">Hallo!</p>
-            </div>
-            <div class="card">
-                <h3 data-translate="lang-spanish">Испанский</h3>
-                <p class="word-highlight">¡Hola!</p>
-            </div>
-            <div class="card">
-                <h3 data-translate="lang-swedish">Шведский</h3>
-                <p class="word-highlight">Hej!</p>
-            </div>
-        </div>
+<main id="main">
 
-        <h2 data-translate="section-quiz">Мини-викторина 🎉</h2>
-        <div class="quiz-box">
-            <!-- Сюда JS будет подставлять номер вопроса -->
-            <h3 id="quiz-progress" style="color: var(--primary); margin-top: 0;">Вопрос 1 из 3</h3>
-            
-            <!-- Текст вопроса -->
-            <p id="quiz-question" style="font-size: 1.1rem; font-weight: bold;"></p>
-            
-            <!-- Контейнер для кнопок с ответами -->
-            <div id="quiz-options"></div>
-            
-            <!-- Сообщение после ответа или финальный результат -->
-            <p id="quiz-result"></p>
-        </div>
+<section class="hero" id="hero">
+  <div class="hero-date">
+    <span class="date-num">26</span>
+    <span class="date-month" data-i18n="heroMonth">сентября</span>
+  </div>
+  <h1 class="hero-title" data-i18n="heroTitle">Европейский<br>день языков</h1>
+  <p class="hero-tagline" data-i18n="heroTagline">Языки объединяют</p>
+  <p class="hero-sub" data-i18n="heroSub2026">Languages unite! — 2026</p>
+
+  <div class="hero-words" aria-hidden="true">
+    <span class="hero-word" style="--i:0">РУССКИЙ</span>
+    <span class="hero-word" style="--i:1">ENGLISH</span>
+    <span class="hero-word" style="--i:2">DEUTSCH</span>
+    <span class="hero-word" style="--i:3">FRANÇAIS</span>
+    <span class="hero-word" style="--i:4">ESPAÑOL</span>
+  </div>
+
+  <button class="explore-btn" id="exploreBtn" data-i18n="exploreBtn">Исследовать языки</button>
+</section>
+
+<section class="section map-section" id="mapSection">
+  <div class="section-head">
+    <span class="section-index">01</span>
+    <h2 class="section-title" data-i18n="mapTitle">Языковая карта Европы</h2>
+  </div>
+  <div class="map-wrap">
+    <svg viewBox="0 0 900 620" class="europe-map" id="europeMap" role="img" aria-label="Abstract map of Europe">
+      <g class="map-lines"></g>
+      <g class="map-points"></g>
+    </svg>
+    <p class="map-hint" data-i18n="mapHint">Нажмите на точку, чтобы услышать приветствие</p>
+  </div>
+</section>
+
+<section class="section languages-section" id="languagesSection">
+  <div class="section-head">
+    <span class="section-index">02</span>
+    <h2 class="section-title" data-i18n="langsTitle">Пять языков</h2>
+  </div>
+  <div class="languages-grid" id="languagesGrid"></div>
+</section>
+
+<section class="section meaning-section" id="meaningSection">
+  <div class="section-head">
+    <span class="section-index">03</span>
+    <h2 class="section-title" data-i18n="meaningTitle">Язык — это больше, чем слова</h2>
+  </div>
+  <p class="meaning-text" data-i18n="meaningText">Европейский день языков напоминает о языковом разнообразии континента, культурном взаимодействии и ценности изучения языков как пути к взаимопониманию.</p>
+  <div class="phrase-stack" id="phraseStack"></div>
+</section>
+
+<section class="section quiz-section" id="quizSection">
+  <div class="section-head">
+    <span class="section-index">04</span>
+    <h2 class="section-title" data-i18n="quizTitle">Викторина</h2>
+  </div>
+
+  <div class="quiz-box" id="quizBox">
+    <div class="quiz-start" id="quizStart">
+      <p class="quiz-intro" data-i18n="quizIntro">Ответьте на 3 случайных вопроса о языках Европы</p>
+      <button class="quiz-btn" id="startQuizBtn" data-i18n="quizStartBtn">Начать викторину</button>
     </div>
 
-    <footer>
-        <p>&copy; 2026 <span data-translate="footer-text">Разработано в VS Code</span></p>
-    </footer>
+    <div class="quiz-play" id="quizPlay" hidden>
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+      </div>
+      <div class="quiz-meta">
+        <span id="quizStep">1</span> / 3
+      </div>
+      <h3 class="quiz-question" id="quizQuestion"></h3>
+      <div class="quiz-answers" id="quizAnswers" role="group" aria-label="Answer options"></div>
+    </div>
 
-    <!-- Подключаем JavaScript -->
-    <script src="script.js"></script>
+    <div class="quiz-result" id="quizResult" hidden>
+      <div class="result-score" id="resultScore">0 / 3</div>
+      <p class="result-text" id="resultText"></p>
+      <button class="quiz-btn" id="retryQuizBtn" data-i18n="quizRetryBtn">Пройти ещё раз</button>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p data-i18n="footerText">Разные языки. Один континент.</p>
+  <p class="footer-date">26.09.2026</p>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
